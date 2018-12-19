@@ -1,0 +1,1 @@
+nslookup slash16.org 8.8.8.8 | grep "Address" | tail -n1 | cut -d " " -f2
