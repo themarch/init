@@ -1,2 +1,0 @@
-ifconfig en0 | grep "broadcast"| cut -d " " -f6
-ping -t 1 10.1.255.255 | grep "64" | cut -d " " -f4 | tr -d ":"
