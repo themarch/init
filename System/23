@@ -1,2 +1,2 @@
 En session graphique, il fqut appyer en haut a droite, puis sur mon nom d'user puis sur changer d'utilsateur, puis sur absent de la liste si cree un nouveau.
-En ssh, il suffit de faire su et le nom d'utilisateur puis le mot de passe. juste "su" si on est en root.
+En ssh, il suffit de faire ssh suivi du nomduuser@localhost
