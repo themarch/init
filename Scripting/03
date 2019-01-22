@@ -1,22 +1,27 @@
 #!/bin/sh
 
-download=$(cat /home/themarch/Bureau/result.log | grep "Download:" | cut -d " " -f2 | cut -d "." -f1)
-upload=$(cat /home/themarch/Bureau/result.log | grep "Upload:" | cut -d " " -f2 | cut -d "." -f1)
+speedtest-cli --simple >> /home/themarch/Bureau/result1.log
+
+download=$(cat /home/themarch/Bureau/result1.log | grep "Download:" | cut -d " " -f2 | cut -d "." -f1)
+upload=$(cat /home/themarch/Bureau/result1.log | grep "Upload:" | cut -d " " -f2 | cut -d "." -f1)
 
 down="400"
-up="100"
+up="20"
 
 if [ "$download" -gt "$down" ]
 then
-	echo "speed download is good"
+	echo "\033[31GOOD DOWNLOAD\033[0m"
 else
-	sendemail -f theodesconta@gmail.com -t theodesconta@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp Gribouille74% -u MAUVAISE CONNECTION -m "Attention, t'a connextion est mauvaise, contacte le service client." -a /home/themarch/Bureau/result.log
-	echo "MAIL SEND"
+	sendemail -f theodesconta@gmail.com -t theomarchandarvierlyon@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp Gribouille74% -u MAUVAISE CONNECTION -m "Attention, ta connexion en Download est inferieur a $down, je t'invite a contacter ton service client." -a /home/themarch/Bureau/result1.log
+	echo "MAIL SEND DOWNLOAD"
 fi
 
 if [ "$upload" -gt "$up" ]
 then
-	echo "good upload"
+	echo "\033[31mGOOD UPLOAD\033[0m"
 else
-	echo "bad upload"
+	sendemail -f theodesconta@gmail.com -t theomarchandarvierlyon@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp Gribouille74% -u MAUVAISE CONNECTION -m "Attention, ta connexion en Upload est inferieur a $up, je t'invite a contacter ton service client." -a /home/themarch/Bureau/result1.log
+	echo "MAIL SEND UPLOAD"
 fi
+
+rm -rf /home/themarch/Bureau/result1.log
