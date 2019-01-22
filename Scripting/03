@@ -1,28 +1,22 @@
-if [ $# -eq 0 ] || [ $# -ge 2 ]
+#!/bin/sh
+
+download=$(cat /home/themarch/Bureau/result.log | grep "Download:" | cut -d " " -f2 | cut -d "." -f1)
+upload=$(cat /home/themarch/Bureau/result.log | grep "Upload:" | cut -d " " -f2 | cut -d "." -f1)
+
+down="400"
+up="100"
+
+if [ "$download" -gt "$down" ]
 then
-	echo "$0 usage: <user>"
-	exit 0
+	echo "speed download is good"
+else
+	sendemail -f theodesconta@gmail.com -t theodesconta@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp Gribouille74% -u MAUVAISE CONNECTION -m "Attention, t'a connextion est mauvaise, contacte le service client." -a /home/themarch/Bureau/result.log
+	echo "MAIL SEND"
 fi
 
-#Check if the user is already log
-#Return : 
-# 0 - User not log
-# 1 - User log
-check_log()
-{
-	USER_LIST=($(who | cut -d " " -f 1))
-	for user in ${USER_LIST[*]}
-	do
-		[ "$1" = "$user" ] && return 1
-	done
-	return 0
-}
-
-check_log $1
-if [[ $? == 1 ]]
+if [ "$upload" -gt "$up" ]
 then
-	echo "Del $1"
-	userdel -fr $1
+	echo "good upload"
 else
-	echo "No deletion"
+	echo "bad upload"
 fi

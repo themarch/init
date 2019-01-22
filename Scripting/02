@@ -4,5 +4,5 @@ if [ -z $true ]
 then
 	echo "L'utilisateur n'es pas loguer ou n'existe pas"
 else
-	echo $(userdel -fr $input)
+	echo $(sudo userdel -fr $input)
 fi
