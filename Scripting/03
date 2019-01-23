@@ -12,7 +12,7 @@ if [ "$download" -gt "$down" ]
 then
 	echo "\033[31GOOD DOWNLOAD\033[0m"
 else
-	sendemail -f theodesconta@gmail.com -t theomarchandarvierlyon@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp Gribouille74% -u MAUVAISE CONNECTION -m "Attention, ta connexion en Download est inferieur a $down, je t'invite a contacter ton service client." -a /home/themarch/Bureau/result1.log
+	sendemail -f theodesconta@gmail.com -t theomarchandarvierlyon@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp test123 -u MAUVAISE CONNECTION -m "Attention, ta connexion en Download est inferieur a $down, je t'invite a contacter ton service client." -a /home/themarch/Bureau/result1.log
 	echo "MAIL SEND DOWNLOAD"
 fi
 
@@ -20,7 +20,7 @@ if [ "$upload" -gt "$up" ]
 then
 	echo "\033[31mGOOD UPLOAD\033[0m"
 else
-	sendemail -f theodesconta@gmail.com -t theomarchandarvierlyon@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp Gribouille74% -u MAUVAISE CONNECTION -m "Attention, ta connexion en Upload est inferieur a $up, je t'invite a contacter ton service client." -a /home/themarch/Bureau/result1.log
+	sendemail -f theodesconta@gmail.com -t theomarchandarvierlyon@gmail.com -s smtp.gmail.com:25 -xu theodesconta@gmail.com -xp test123 -u MAUVAISE CONNECTION -m "Attention, ta connexion en Upload est inferieur a $up, je t'invite a contacter ton service client." -a /home/themarch/Bureau/result1.log
 	echo "MAIL SEND UPLOAD"
 fi
 
